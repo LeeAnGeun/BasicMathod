@@ -17,7 +17,7 @@ public class Calculation {
 		System.out.println("결과 값 = " + num1 + oper + num2 + "=" + caculator(num1, num2, oper));
 	}
 	
-	// 
+	//
 	static int numberInput() {
 		Scanner sc = new Scanner(System.in);
 
