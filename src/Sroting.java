@@ -8,6 +8,7 @@ public class Sroting {
 		  Sorting : 정렬
 		  -> 오름차순 , 내림자순
 		 */	
+
 		int[] arr = inNumber(); // 배열 생성메소드
 
 		// 3. 오름/내림
@@ -43,37 +44,42 @@ public class Sroting {
 	}
 
 	private static void downSorting(int[] arr) {
-		int temp;
 		
 		for (int i = 0; i < arr.length-1; i++) {
 			for (int j = i+1; j < arr.length; j++) {
 				if(arr[i]<arr[j]) {
-					temp = arr[i];
-					arr[i] = arr[j];
-					arr[j] = temp;
+					swap(arr, i, j);
+					
 				}
 			}
 		}
 	}
 
 	private static void upSorting(int[] arr) {
-		int temp;
 		
 		for (int i = 0; i < arr.length-1; i++) {
 			for (int j = i+1; j < arr.length; j++) {
 				if(arr[i]>arr[j]) {
-					temp = arr[i];
-					arr[i] = arr[j];
-					arr[j] = temp;
+					swap(arr, i , j);        // swap 메소드
 				}
 			}
 		}
+	}
+	
+	// Sortig 작업중 swap 작업을 위한 메소드
+	static void swap(int arr[], int i, int j) {
+		int temp;
+		
+		temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+		
 	}
 
 	private static int[] inNumber() {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("num = ");
+		System.out.print("숫자갯수 = ");
 		int num = sc.nextInt();
 		
 		int arr[] = new int[num];
@@ -83,7 +89,7 @@ public class Sroting {
 			arr[i] = sc.nextInt();
 		}
 		System.out.println("입력한 정렬 =" + Arrays.toString(arr));
-		
+				
 		return arr;
 	}
 }
