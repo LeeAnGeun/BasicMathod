@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AddressBookClass {
@@ -143,17 +144,33 @@ public class AddressBookClass {
 		System.out.print("수정할 분의 이름이 무엇입니까? ");
 		name = sc.next();
 		int searchNum = searchMember(member, name); // searchMember() 메소드를 통해 찾는 이름의 번지수를 반환받음
+		int ad_ph;
+		System.out.print("전화번호 수정 :1, 주소 수정 : 2 ");
+		ad_ph = sc.nextInt();
 		
 		// 전화번호 수정
-		if(searchNum == 101) {    // 수정할 내용이 없을시 넘어가기 위한 조건
-			System.out.println("해당이름을 찾지 못하였습니다.");
-		}
-		else {
-			member[searchNum][2] = "null"; 
-			System.out.print("수정할 전화번호 : ");
-			member[searchNum][2] = sc.next();
+		if( ad_ph == 1 ) {
+			if(searchNum == 101) {    // 수정할 내용이 없을시 넘어가기 위한 조건
+				System.out.println("해당이름을 찾지 못하였습니다.");
+			}
+			else {
+				member[searchNum][2] = "null"; 
+				System.out.print("수정할 전화번호 : ");
+				member[searchNum][2] = sc.next();
+			}
 		}
 		
+		// 주소 수정
+		if( ad_ph == 2) {
+			if(searchNum == 101) {    // 수정할 내용이 없을시 넘어가기 위한 조건
+				System.out.println("해당이름을 찾지 못하였습니다.");
+			}
+			else {
+				member[searchNum][3] = "null"; 
+				System.out.print("수정할 주소 : ");
+				member[searchNum][3] = sc.next();
+			}
+		}
 		System.out.println("==================");
 	}
 	
@@ -166,16 +183,21 @@ public class AddressBookClass {
 			if(member[i][0]==null) {        // 추가된 친구가 없을시 넘어가기 위한 조건문
 				continue;			
 			}
-			
-			for (int j = 0; j < member[i].length; j++) {  // 저장되어있는 모든 친구를 보여주기위한 반복문
-				System.out.print(column[j] + " : ");
-				System.out.println(member[i][j]);
+			if( i == 0){
+				for (int j = 0; j < column.length; j++) {  // 저장되어있는 모든 친구를 보여주기위한 반복문
+					System.out.print(column[j] + "\t");		
+					if( j == 2 ) {        // 저장한 핸드폰 입력값이 긴것을 대비해 한번더 \t을 사용
+						System.out.print("\t");
+					}
+				}
+				System.out.println();
 			}
-			
-			System.out.println("=====================================");
-		
+			for (int j = 0; j < member[i].length; j++) {
+				System.out.print(member[i][j] + "\t");
+			}
+			System.out.println();	
 		}
-		
+		System.out.println("=====================================");	
 	}
 	
 	// 찾는 이름의 번지수를 찾기위한 메소드
