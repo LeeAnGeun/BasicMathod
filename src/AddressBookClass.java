@@ -72,9 +72,9 @@ public class AddressBookClass {
 	
 		while(true) {      // 이미 저장되어있는 번호를 선택했을시 다시 입력받기위한 반복문
 			System.out.print("몇번에 추가하시겠습니까? ");
-			num = sc.nextInt();
+			num = sc.nextInt();  // 저장할 위치를 입력하기 위한 변수
 			
-			if(member[num][0]!=null) {  // 해당 num에 이미 정보가 저장되어있을시 다시 입력을 받기위한 반복문
+			if(member[num][0]!=null) {  // 해당 num에 이미 정보가 저장되어 있을 시 다시 입력을 받기위한 반복문
 				System.out.println("이미 저장되어 있습니다. 다른 번호를 선택해 주십시오.");
 				continue;
 			}
@@ -94,9 +94,9 @@ public class AddressBookClass {
 	static void delete(String[][] member) {
 		Scanner sc = new Scanner(System.in);
 		
-		String name;		
+		String name;		// 이름 변수
 		System.out.print("삭제할 분의 성함이 무엇입니까? ");
-		name = sc.next();
+		name = sc.next();  // 삭제할 이름을 입력
 		int searchNum = searchMember(member, name);  // searchMember() 메소드를 통해 찾는 이름의 번지수를 반환받음
 	
 		
@@ -154,7 +154,7 @@ public class AddressBookClass {
 				System.out.println("해당이름을 찾지 못하였습니다.");
 			}
 			else {
-				member[searchNum][2] = "null"; 
+				member[searchNum][2] = "null"; // 초기 입력한 전화번호를 null로 초기화 시킴
 				System.out.print("수정할 전화번호 : ");
 				member[searchNum][2] = sc.next();
 			}
@@ -166,7 +166,7 @@ public class AddressBookClass {
 				System.out.println("해당이름을 찾지 못하였습니다.");
 			}
 			else {
-				member[searchNum][3] = "null"; 
+				member[searchNum][3] = "null"; // 초기 입력한 주소를 null로 초기화 시킴
 				System.out.print("수정할 주소 : ");
 				member[searchNum][3] = sc.next();
 			}
